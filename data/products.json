@@ -1,0 +1,50 @@
+[
+    {
+        "name" : "Turtleneck Blue",
+        "description" : "Solid casual rib top, Turtle neckline, Unlined, Slim fit, Slip on style, Long sleeves, Cotton blend", 
+        "price" : 150000,
+        "imageUrl" : "https://item.elandrs.com/r/image/item/2023-09-25/fa57783b-8e91-42a4-a3aa-9cf61d08386d.jpg?w=1020&h=&q=100",
+        "CategoryId" : 1,
+        "stock" : 5
+    },
+    {
+        "name" : "Kaos Basic R-neck",
+        "description" : "Casual tee detail Seasonal Art print dengan siluet versatile, Material Katun tidak transparan, ringan dan tidak stretch", 
+        "price" : 200000,
+        "imageUrl" : "https://item.elandrs.com/r/image/item/2023-09-14/d0a77ca0-227b-4841-809a-4e8e6fa78d5e.jpg?w=1020&h=&q=100",
+        "CategoryId" : 1,
+        "stock" : 5
+    },
+    {
+        "name" : "Sportswear Men's T-Shirt",
+        "description" : "Solid tone back and front graphic tee, Midweight fabric feels soft & slightly structured, Short sleeves", 
+        "price" : 300000,
+        "imageUrl" : "https://dynamic.zacdn.com/E6VHlgXgiOSmP3nLytQIQTi464Y=/filters:quality(70):format(webp)/https://static-id.zacdn.com/p/new-era-4953-9726033-1.jpg",
+        "CategoryId" : 1,
+        "stock" : 5
+    },
+    {
+        "name" : "Kasa Heritage",
+        "description" : "one set dengan desain ruffles berbahan kombinasi chiffon dan lace pleats yang mewah dan elegan", 
+        "price" : 500000,
+        "imageUrl" : "https://item.elandrs.com/r/image/item/2023-10-10/001fcd95-fc7c-4d3a-9860-077b2995c6b1.jpg?w=1020&h=&q=100",
+        "CategoryId" : 3,
+        "stock" : 5
+    },
+    {
+        "name" : "Mini Belted Dress",
+        "description" : "Solid tone mini dress tone color", 
+        "price" : 400000,
+        "imageUrl" : "https://item.elandrs.com/upload/prd/orgimg/361/2210392361_0000003.jpg?w=1020&h=&q=100",
+        "CategoryId" : 3,
+        "stock" : 5
+    },
+    {
+        "name" : "Slim Utility Suit Jacket",
+        "description" : "Solid hue suit jacket, Lapel collar neckline", 
+        "price" : 200000,
+        "imageUrl" : "https://dynamic.zacdn.com/e4hjYIaPqFI5OshbWbJnysvLWDU=/filters:quality(70):format(webp)/https://static-id.zacdn.com/p/topman-7451-0139943-1.jpg",
+        "CategoryId" : 5,
+        "stock" : 5
+    }
+]

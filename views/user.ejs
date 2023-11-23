@@ -1,0 +1,43 @@
+<!-- user.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>User Profile</title>
+    <!-- Add your CSS links or styles here -->
+</head>
+<body>
+    <header>
+        <h1>User Profile</h1>
+    </header>
+
+    <main>
+        <% if(user) { %>
+            <div>
+                <h2>Welcome, <%= user.username %>!</h2>
+                <p>Email: <%= user.email %></p>
+
+                <!-- Assuming Profile is associated with User -->
+                <% if(user.Profile) { %>
+                    <h3>Profile Information</h3>
+                    <p>Name: <%= user.Profile.name %></p>
+                    <p>Age: <%= user.Profile.addres %></p>
+                    <!-- Add other profile details as needed -->
+                <% } else { %>
+                    <p>No profile information available.</p>
+                <% } %>
+            </div>
+        <% } else { %>
+            <p>Error retrieving user information.</p>
+        <% } %>
+    </main>
+
+    <!-- Add your scripts or other dependencies here -->
+
+    <footer>
+        <p>&copy; 2023 Your App Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>
