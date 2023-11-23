@@ -28,20 +28,35 @@ class CustomerController {
             res.send(error);
           }
     }
-    static async findUser(req, res){
+    static async addToCart(req, res){
         try {
-        //   console.log(req.session.user)
-          const user = await User.findOne({
-            where : {
-              id : req.session.user.id
-            },
-            include : Profile
-          })
-          console.log(user)
-          res.render("user", {user})
+            const {productId} = req.params
+            const {user} = req.session
+
+            const profile = await Profile.findOne({
+                where : {UserId : user.id}
+            })
+            const product = await Product.findByPk(productId)
+            await profile.addProduct(product)
+            res.redirect("/transaction")
         } catch (error) {
           res.send(error)
         }
       }
+    static async displayCart(req,res){
+        try {
+            const {user} = req.session
+            const profile = await Profile.findOne({
+                where : {UserId : user.id},
+                include : {
+                    model : Product,
+                    through : Transaction
+                }
+            })
+            res.render("cart", {profile})
+        } catch (error) {
+            res.send(error)
+        }
+    }
 }
 module.exports = CustomerController

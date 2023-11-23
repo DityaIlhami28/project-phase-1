@@ -5,6 +5,7 @@ const port = 3000
 const AdminController = require("./controllers/UserController")
 const qrcode = require('qrcode')
 const CustomerController = require("./controllers/CustomerController")
+const transaction = require("./models/transaction")
 
 app.set("view engine", "ejs")
 app.use(express.urlencoded({extended : false}))
@@ -36,6 +37,8 @@ app.post("/transaction", (req,res,next) => {
         })
     })
 })
+app.post("/add-to-cart/:profileId", CustomerController.addToCart)
+
 
 app.get("/register", AdminController.registerUserForm)
 app.post("/register", AdminController.postRegisterUser)
@@ -44,7 +47,7 @@ app.post("/login", AdminController.loginUserPost)
 app.get("/logout", AdminController.logoutUser)
 app.get("/create-profile", AdminController.createProfile)
 app.post("/create-profile", AdminController.createProfilePost)
-app.get("/user/:id", CustomerController.findUser)
+// app.get("/user/:id", CustomerController.findUser)
 app.get("/", (req, res) => {
 res.render("home")
 })

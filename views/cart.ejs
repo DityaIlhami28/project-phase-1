@@ -1,11 +1,10 @@
-<!-- cart.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Shopping Cart</title>
+    <title>Cart</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Optional: Add your custom styles here -->
@@ -13,37 +12,59 @@
         body {
             background-color: #f8f9fa;
         }
-        .cart-container {
-            margin-top: 20px;
+
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Adjust as needed */
+        }
+
+        img {
+            max-width: 100%; /* Ensure the image doesn't exceed its container width */
+            margin-bottom: 20px; /* Add some spacing between the QR code and the text */
         }
     </style>
 </head>
+
 <body>
 
-<%- include('navbar') %>
+    <div class="container mt-3 center-content">
+        <h2 class="text-center mb-4">Your Cart</h2>
+        
+        <% if (profile && profile.Products && profile.Products.length > 0) { %>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <% profile.Products.forEach((product) => { %>
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="<%= product.imageUrl %>" class="card-img-top" alt="<%= product.name %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= product.name %></h5>
+                                <p class="card-text"><%= product.description %></p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Category: <%= product.Category.name %></li>
+                                    <li class="list-group-item">Stock: <%= product.stock %></li>
+                                    <li class="list-group-item">Price: <%= product.formatPrice %></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <p>Your cart is empty.</p>
+        <% } %>
 
-<div class="container mt-3">
-    <h2>Shopping Cart</h2>
+        <br>
+        <a href="/" class="btn btn-primary">Back</a>
+        <!-- Add your home page content here -->
+    </div>
 
-    <% if (cart && cart.Products && cart.Products.length > 0) { %>
-        <ul class="list-group">
-            <% cart.Products.forEach(product => { %>
-                <li class="list-group-item">
-                    <h4><%= product.name %></h4>
-                    <p><%= product.description %></p>
-                    <p>Price: $<%= product.price.toFixed(2) %></p>
-                    <p>Category: <%= product.Category.name %></p>
-                </li>
-            <% }) %>
-        </ul>
-    <% } else { %>
-        <p>Your cart is empty.</p>
-    <% } %>
-
-</div>
-
-<!-- Bootstrap JS (optional, but required for certain features like the dropdowns) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS (optional, but required for certain features like the dropdowns) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
+
