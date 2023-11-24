@@ -162,7 +162,7 @@ class AdminController {
             res.render("products", { product, nameProduct });
           }
         } catch (error) {
-          console.log(error);
+        //   console.log(error);
           res.send(error.message);
         }
     }
@@ -171,7 +171,7 @@ class AdminController {
           const category = await Category.findAll();
           res.render("addFormProduct", { category });
         } catch (error) {
-          console.log(error);
+        //   console.log(error);
           res.send(error);
         }
       }
@@ -190,7 +190,7 @@ class AdminController {
           });
           res.redirect("/admin");
         } catch (error) {
-          console.log(error);
+        //   console.log(error);
           res.send(error);
         }
       }
@@ -209,7 +209,7 @@ class AdminController {
     
           res.redirect("/admin");
         } catch (error) {
-          console.log(error);
+        //   console.log(error);
           res.send(error);
         }
       }
@@ -228,7 +228,7 @@ class AdminController {
     
           res.redirect("/admin");
         } catch (error) {
-          console.log(error);
+        //   console.log(error);
           res.send(error);
         }
       }
@@ -256,7 +256,7 @@ class AdminController {
           //   res.redirect("/admin");
           res.redirect(`/admin?nameProduct=${nameProduct}`);
         } catch (error) {
-          console.log(error);
+        //   console.log(error);
           res.send(error);
         }
       }

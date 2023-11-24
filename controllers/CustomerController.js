@@ -47,7 +47,7 @@ class CustomerController {
             // res.send({product})
             res.render("transaction", {product})
         } catch (error) {
-          res.send(error.message)
+          res.send(error)
         }
       }
     static async displayCart(req,res){

@@ -18,13 +18,28 @@ app.use(session({
     sameSite : true}
 }))
 
-// const authenticate = function(req,res,next) {
-//     console.log("Time", Date.now())
-//     next()
-// }
-// app.get("/transaction", (req,res) => {
-//     res.render("transaction")
-// })
+app.get("/register", AdminController.registerUserForm)
+app.post("/register", AdminController.postRegisterUser)
+app.get("/login", AdminController.loginUser)
+app.post("/login", AdminController.loginUserPost)
+app.get("/logout", AdminController.logoutUser)
+app.get("/create-profile", AdminController.createProfile)
+app.post("/create-profile", AdminController.createProfilePost)
+app.get("/", (req, res) => {
+    res.render("home")
+})
+
+app.use(function(req,res,next) {
+    if (!req.session.user){
+        const error = "Please Login to Access"
+        res.redirect(`/login?error=${error}`)
+    } else {
+        next()
+    }
+})
+
+app.get("/products", CustomerController.getProduct)
+
 app.get("/transaction/:id", CustomerController.addToCart)
 app.post("/transaction/:id", (req,res,next) => {
     const body = req.body
@@ -38,32 +53,6 @@ app.post("/transaction/:id", (req,res,next) => {
         })
     })
 })
-
-
-app.get("/register", AdminController.registerUserForm)
-app.post("/register", AdminController.postRegisterUser)
-app.get("/login", AdminController.loginUser)
-app.post("/login", AdminController.loginUserPost)
-app.get("/logout", AdminController.logoutUser)
-app.get("/create-profile", AdminController.createProfile)
-app.post("/create-profile", AdminController.createProfilePost)
-// app.get("/user/:id", CustomerController.findUser)
-app.get("/", (req, res) => {
-res.render("home")
-})
-
-app.use(function(req,res,next) {
-    // console.log(req.session)
-    if (!req.session.user){
-        const error = "Please Login to Access"
-        res.redirect(`/login?error=${error}`)
-    } else {
-        next()
-    }
-})
-
-app.get("/products", CustomerController.getProduct)
-
 
 app.use(function(req,res,next) {
     // console.log(req.session)
