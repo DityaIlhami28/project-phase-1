@@ -28,8 +28,33 @@
                     <div class="card-header">
                         <h3 class="text-center">Cart</h3>
                     </div>
+                    <table class="table">
+                        <tbody class="table-group-divider">
+                            <div class="container">
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img src="<%= product.imageUrl %>" class="card-img-top" alt="product pict">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><%= product.name %></h5>
+                                                    <p class="card-text"><%= product.description %></p>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Category: <%= product.Category.name %></li>
+                                                        <li class="list-group-item">Price: <%= product.formatPrice %></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="card-footer">
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                           
+                          </tr>
+                        </tbody>
+                      </table>
                     <div class="card-body">
-                        <form action="/transaction" method="POST">
+                        <form action="/transaction/:id" method="POST">
                             <div class="mb-3">
                                 <label for="Delivery" class="form-label">Delivery</label>
                                 <select class="form-select" id="Delivery" name="Delivery">

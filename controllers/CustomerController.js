@@ -30,17 +30,24 @@ class CustomerController {
     }
     static async addToCart(req, res){
         try {
-            const {productId} = req.params
-            const {user} = req.session
+            const id = req.params.id
 
-            const profile = await Profile.findOne({
-                where : {UserId : user.id}
+            const product = await Product.findOne({
+                where : {id : id},
+                include : Category
             })
-            const product = await Product.findByPk(productId)
-            await profile.addProduct(product)
-            res.redirect("/transaction")
+            // const product = await Product.findByPk(productId)
+            let data = await Product.decrement("stock", {
+                where : {
+                    id : id
+                },
+                by : 1
+            })
+            // await profile.addProduct(product)
+            // res.send({product})
+            res.render("transaction", {product})
         } catch (error) {
-          res.send(error)
+          res.send(error.message)
         }
       }
     static async displayCart(req,res){

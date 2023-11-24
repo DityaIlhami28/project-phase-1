@@ -22,10 +22,11 @@ app.use(session({
 //     console.log("Time", Date.now())
 //     next()
 // }
-app.get("/transaction", (req,res) => {
-    res.render("transaction")
-})
-app.post("/transaction", (req,res,next) => {
+// app.get("/transaction", (req,res) => {
+//     res.render("transaction")
+// })
+app.get("/transaction/:id", CustomerController.addToCart)
+app.post("/transaction/:id", (req,res,next) => {
     const body = req.body
     const dataForQRCode = `${body.Delivery}-${body.Payment}`
     qrcode.toDataURL(dataForQRCode, (err,src) => {
@@ -37,7 +38,6 @@ app.post("/transaction", (req,res,next) => {
         })
     })
 })
-app.post("/add-to-cart/:profileId", CustomerController.addToCart)
 
 
 app.get("/register", AdminController.registerUserForm)
